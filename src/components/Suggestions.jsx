@@ -16,7 +16,7 @@ export default function Suggestions() {
   // ✅ Initialize AOS
   useEffect(() => {
     AOS.init({
-      duration: 600,
+      duration: 500,
       once: true,
       easing: "ease-in-out",
     });
