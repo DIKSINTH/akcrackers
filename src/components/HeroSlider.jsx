@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from "react";
+import img2 from "../assets/images/2.jpg";
+import img3 from "../assets/images/3.jpg";
+import img4 from "../assets/images/4.jpg";
 
 const slides = [
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1608889175113-6f0c6f88c4ef?q=80&w=1600",
+    image: img2,
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1600",
+    image: img3,
   },
   {
     id: 3,
-    image:
-      "https://images.unsplash.com/photo-1608889825103-eb5ed706fc64?q=80&w=1600",
+    image: img4,
   },
 ];
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
 
-  // Auto Slide
+  // ✅ Automatic Slide (Clean Version)
   useEffect(() => {
     const interval = setInterval(() => {
-      // eslint-disable-next-line react-hooks/immutability
-      nextSlide();
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [current]);
+  }, []);
 
+  // ✅ Manual Next
   const nextSlide = () => {
     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
+  // ✅ Manual Previous
   const prevSlide = () => {
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
@@ -46,16 +47,16 @@ const HeroSlider = () => {
         <div
           key={slide.id}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
+            index === current ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
           <img
             src={slide.image}
-            alt="Jelly Crackers Fireworks"
+            alt="AK Crackers Fireworks"
             className="w-full h-full object-cover"
           />
 
-          {/* Overlay */}
+          {/* Dark Overlay */}
           <div className="absolute inset-0 bg-black/40"></div>
 
           {/* Text Content */}
@@ -70,23 +71,24 @@ const HeroSlider = () => {
         </div>
       ))}
 
-      {/* Manual Buttons */}
+      {/* PREV BUTTON */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#525252]/60 text-white p-3 rounded-full hover:bg-[#f26104] transition"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#525252]/60 text-white p-3 rounded-full hover:bg-[#f26104] transition z-20"
       >
         ❮
       </button>
 
+      {/* NEXT BUTTON */}
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#525252]/60 text-white p-3 rounded-full hover:bg-[#f26104] transition"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#525252]/60 text-white p-3 rounded-full hover:bg-[#f26104] transition z-20"
       >
         ❯
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3">
+      {/* DOTS */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-3 z-20">
         {slides.map((_, index) => (
           <div
             key={index}
@@ -98,7 +100,7 @@ const HeroSlider = () => {
         ))}
       </div>
 
-      {/* FIXED WHATSAPP ICON */}
+      {/* FIXED WHATSAPP BUTTON */}
       <a
         href="https://wa.me/919159799823"
         target="_blank"
@@ -107,7 +109,7 @@ const HeroSlider = () => {
       >
         <img
           src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-          alt="WhatsApp"
+          alt="Chat on WhatsApp"
           className="w-14 h-14 hover:scale-110 transition"
         />
       </a>
