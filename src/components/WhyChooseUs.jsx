@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
   useEffect(() => {
     AOS.init({
       duration: 500,
-      once: true,
+      once: false,
       easing: "ease-in-out",
     });
   }, []);

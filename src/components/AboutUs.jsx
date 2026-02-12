@@ -1,7 +1,15 @@
-import React from "react";
-import aboutImg from "../assets/images/logo.png"; // replace with your image path
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // import AOS styles
+import aboutImg from "../assets/images/logo.png";
 
 const AboutUs = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 600, // animation duration in ms // whether animation should happen only once
+    });
+  }, []);
+
   return (
     <section
       id="about"
@@ -10,7 +18,7 @@ const AboutUs = () => {
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
         {/* LEFT IMAGE */}
-        <div className="flex justify-center">
+        <div className="flex justify-center" data-aos="fade-right">
           <img
             src={aboutImg}
             alt="AK Crackers biggest Diwali fireworks sale products"
@@ -20,7 +28,7 @@ const AboutUs = () => {
         </div>
 
         {/* RIGHT CONTENT */}
-        <div>
+        <div data-aos="fade-left">
           {/* SEO Heading */}
           <h2
             id="about-heading"
@@ -47,19 +55,31 @@ const AboutUs = () => {
           {/* STATS CARDS */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+            <div
+              className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
               <h3 className="text-3xl font-bold text-[#f26104]">200+</h3>
               <p className="text-[#525252] mt-2">Products</p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+            <div
+              className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
+              data-aos="zoom-in"
+              data-aos-delay="200"
+            >
               <h3 className="text-3xl font-bold text-[#f26104]">500+</h3>
               <p className="text-[#525252] mt-2">Happy Clients</p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+            <div
+              className="bg-[#fefeff] rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
               <h3 className="text-3xl font-bold text-[#f26104]">100%</h3>
               <p className="text-[#525252] mt-2">Satisfaction</p>
             </div>
