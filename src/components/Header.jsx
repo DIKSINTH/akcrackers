@@ -42,12 +42,12 @@ const Header = () => {
               </a>
             </li>
             <li>
-              <a
+              {/* <a
                 href="/payment-information"
                 className="hover:text-[#f26104] transition"
               >
                 Payment Info
-              </a>
+              </a> */}
             </li>
             <li>
               <a href="/about" className="hover:text-[#f26104] transition">
