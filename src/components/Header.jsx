@@ -41,14 +41,14 @@ const Header = () => {
                 Estimate
               </a>
             </li>
-            <li>
-              {/* <a
+            {/* <li>
+              <a
                 href="/payment-information"
                 className="hover:text-[#f26104] transition"
               >
                 Payment Info
-              </a> */}
-            </li>
+              </a>
+            </li> */}
             <li>
               <a href="/about" className="hover:text-[#f26104] transition">
                 About Us
