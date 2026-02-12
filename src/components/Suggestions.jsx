@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // add your images here
 import img1 from "../assets/images/1.jpg";
@@ -11,10 +13,19 @@ import img6 from "../assets/images/6.jpg";
 const suggestions = [img1, img2, img3, img4, img5, img6];
 
 export default function Suggestions() {
+  // ✅ Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
+
   return (
     <section className="bg-white py-14">
       {/* ===== Heading Bar ===== */}
-      <div className="bg-[#f26104] py-4 shadow-lg">
+      <div className="bg-[#f26104] py-4 shadow-lg" data-aos="fade-down">
         <h2 className="text-center text-white text-2xl md:text-3xl font-bold tracking-wide">
           Our Suggestions
         </h2>
@@ -33,6 +44,8 @@ export default function Suggestions() {
           {suggestions.map((img, index) => (
             <div
               key={index}
+              data-aos="zoom-in"
+              data-aos-delay={index * 150}
               className="
                 group relative
                 overflow-hidden

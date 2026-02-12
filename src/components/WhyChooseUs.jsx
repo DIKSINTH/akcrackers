@@ -1,12 +1,8 @@
-import React from "react";
-import {
-  Boxes,
-  Settings,
-  ShieldCheck,
-  Tag,
-  Award,
-  Grid,
-} from "lucide-react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import { Boxes, Settings, ShieldCheck, Tag, Award, Grid } from "lucide-react";
 
 const features = [
   { icon: Boxes, title: "Bulk Orders" },
@@ -18,10 +14,22 @@ const features = [
 ];
 
 export default function WhyChooseUs() {
+  // ✅ Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
+
   return (
     <section className="bg-[#f26104] py-14">
       {/* SEO important heading */}
-      <h2 className="text-center text-white text-3xl font-bold mb-12">
+      <h2
+        className="text-center text-white text-3xl font-bold mb-12"
+        data-aos="fade-up"
+      >
         Why Choose Us
       </h2>
 
@@ -33,6 +41,8 @@ export default function WhyChooseUs() {
             return (
               <article
                 key={index}
+                data-aos="zoom-in"
+                data-aos-delay={index * 150}
                 className="
                   bg-white rounded-[45px] py-10
                   flex flex-col items-center

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import img2 from "../assets/images/2.jpg";
 import img3 from "../assets/images/3.jpg";
 import img4 from "../assets/images/4.jpg";
@@ -20,6 +23,15 @@ const slides = [
 
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
+
+  // ✅ Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 1200,
+      once: false,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   // ✅ Automatic Slide (Clean Version)
   useEffect(() => {
@@ -61,10 +73,17 @@ const HeroSlider = () => {
 
           {/* Text Content */}
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-            <h1 className="text-[#fefeff] text-2xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+            <h1
+              data-aos="fade-up"
+              className="text-[#fefeff] text-2xl md:text-5xl font-bold mb-4 drop-shadow-lg"
+            >
               Welcome To The Great
             </h1>
-            <h2 className="text-[#f26104] text-3xl md:text-6xl font-extrabold drop-shadow-lg">
+            <h2
+              data-aos="fade-up"
+              data-aos-delay="300"
+              className="text-[#f26104] text-3xl md:text-6xl font-extrabold drop-shadow-lg"
+            >
               AK Crackers
             </h2>
           </div>
@@ -106,6 +125,7 @@ const HeroSlider = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-5 left-5 z-50"
+        data-aos="fade-right"
       >
         <img
           src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
@@ -118,6 +138,7 @@ const HeroSlider = () => {
       <a
         href="/estimate"
         className="fixed bottom-5 right-5 z-50 bg-[#f26104] text-[#fefeff] px-6 py-3 rounded-full shadow-lg hover:scale-105 transition font-semibold"
+        data-aos="fade-left"
       >
         Estimate Now
       </a>
